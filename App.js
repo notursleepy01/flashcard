@@ -1,10 +1,9 @@
 // App.js
-import 'react-native-gesture-handler'; // Should be at the top
+import 'react-native-gesture-handler';
 import React, { useState, useEffect } from 'react';
 import { ActivityIndicator, View, StyleSheet, StatusBar } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
+import { Slot } from 'expo-router';
 import { initDB } from './src/services/database';
-import AppNavigator from './src/navigation/AppNavigator';
 import { COLORS } from './src/constants/colors';
 
 export default function App() {
@@ -29,11 +28,12 @@ export default function App() {
     );
   }
 
+  // Slot will render the current active screen from the app/ directory
   return (
-    <NavigationContainer>
-      <StatusBar barStyle="dark-content" />
-      <AppNavigator />
-    </NavigationContainer>
+      <>
+        <StatusBar barStyle="dark-content" />
+        <Slot />
+      </>
   );
 }
 
